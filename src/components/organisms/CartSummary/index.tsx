@@ -1,7 +1,8 @@
 import { Button, Checkbox } from "@/components/atoms";
-import { formatCurrency, pluralise } from "@/utils/helpers";
+import { formatCurrency, pluralise, sumCart } from "@/utils/helpers";
 import Link from "next/link";
 import { useAppState } from "store/context";
+
 import styles from "./CartSummary.module.scss";
 
 export const CartSummary = () => {
@@ -17,7 +18,7 @@ export const CartSummary = () => {
               cart?.length,
               "item",
             )}):`}</p>
-            <p className={styles.cart__price}>{formatCurrency(91.37)} </p>
+            <p className={styles.cart__price}>{formatCurrency(sumCart())} </p>
           </div>
           <Checkbox label="This order contains a gift" />
           <Link href={"/checkout"}>

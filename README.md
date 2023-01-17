@@ -1,4 +1,4 @@
-##  WBN store
+## WBN store
 
 WBN store is an online store where you can purchase your ecommerce products
 
@@ -35,6 +35,8 @@ Go to the project directory
 
 ## Environment Variables
 
+NEXT_PUBLIC_BASE_URL=https://fakestoreapi.com
+
 ```bash
 NEXT_PUBLIC_BASE_URL=
 
@@ -53,8 +55,6 @@ Start the server
 ```
 
 ## Demo
-
-
 
 ## Tech Stack
 

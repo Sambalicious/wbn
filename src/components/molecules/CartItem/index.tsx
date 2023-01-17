@@ -61,7 +61,7 @@ export const CartItem = ({
     }
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { id, quantity: newQuantity },
+      payload: { id, quantity: newQuantity, price },
     });
   };
 

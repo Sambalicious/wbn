@@ -2,6 +2,7 @@ import { Loader } from "@/components/atoms";
 import { CartItem, EmptyState } from "@/components/molecules";
 import { Cart } from "@/components/organisms";
 import { useGetProducts } from "@/hooks/index";
+import { ICart } from "@/types/index";
 import { useAppState } from "store/context";
 import styles from "./Cart.module.scss";
 interface CartTemplateProps {
@@ -12,19 +13,19 @@ export const CartTemplate = ({ cartType = "cart" }: CartTemplateProps) => {
   const { state, dispatch } = useAppState();
   const cart = state?.cart;
 
-  const handleAddQuantity = (id: number, quantity: number) => {
+  const handleAddQuantity = (id: number, quantity: number, price: number) => {
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { id, quantity: quantity + 1 },
+      payload: { id, quantity: quantity + 1, price },
     });
   };
 
-  const handleDecreaseQuantity = (id: number, quantity: number) => {
+  const handleDecreaseQuantity = ({ id, quantity, price }: ICart) => {
     if (quantity < 1) return;
 
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { id, quantity: quantity - 1 },
+      payload: { id, quantity: quantity - 1, price },
     });
   };
 
@@ -59,8 +60,14 @@ export const CartTemplate = ({ cartType = "cart" }: CartTemplateProps) => {
               isAvailable
               isFreeShipping
               productName={item?.title!}
-              addQuantity={el => handleAddQuantity(item?.id!, el)}
-              decreaseQuantity={el => handleDecreaseQuantity(item?.id!, el)}
+              addQuantity={el => handleAddQuantity(item?.id!, el, item?.price!)}
+              decreaseQuantity={el =>
+                handleDecreaseQuantity({
+                  id: item?.id!,
+                  quantity: el,
+                  price: item?.price!,
+                })
+              }
               deleteItem={() => handleDeleteItem(item?.id!)}
               saveForLater={() => handleSaveForLater(item?.id!)}
               id={item?.id!}

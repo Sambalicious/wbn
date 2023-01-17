@@ -1,4 +1,4 @@
-import { formatCurrency } from "@/utils/helpers";
+import { formatCurrency, sumCart } from "@/utils/helpers";
 import styles from "./OrderSummaryItem.module.scss";
 
 interface OrderSummaryProps {
@@ -19,7 +19,7 @@ export const OrderSummaryItem = ({
           <tbody>
             <tr className={styles.item__details}>
               <td>{`items(${cart}) :`} </td>
-              <td>{formatCurrency(91.75)} </td>
+              <td>{formatCurrency(sumCart())} </td>
             </tr>
             <tr className={styles.item__details}>
               <td>Shipping Cost </td>
@@ -31,7 +31,9 @@ export const OrderSummaryItem = ({
             </tr>
             <tr className={styles.item__total}>
               <td>Total Order</td>
-              <td>{formatCurrency(91.75)} </td>
+              <td>
+                {formatCurrency(sumCart() - (couponDiscount + shippingFee))}{" "}
+              </td>
             </tr>
           </tbody>
         </table>

@@ -11,8 +11,8 @@ export const RecommendedProducts = () => {
     return products?.find(product => product.id === item.id);
   });
 
-  const handleAddToCart = (id: number) => {
-    dispatch({ type: "ADD_TO_CART", payload: { id, quantity: 1 } });
+  const handleAddToCart = (id: number, price: number) => {
+    dispatch({ type: "ADD_TO_CART", payload: { id, quantity: 1, price } });
   };
 
   return (
@@ -35,7 +35,7 @@ export const RecommendedProducts = () => {
               image={product?.image!}
               productName={product?.title!}
               price={product?.price!}
-              addToCart={() => handleAddToCart(product?.id!)}
+              addToCart={() => handleAddToCart(product?.id!, product?.price!)}
               sellerName={"WBN"}
             />
           ))

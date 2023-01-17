@@ -1,3 +1,5 @@
+import { ICart } from "../types";
+
 export const storage = {
   get: function (key: string) {
     try {
@@ -46,3 +48,12 @@ export const formatCurrency = (amount: number) => {
     return amount;
   }
 };
+
+export function sumCart() {
+  let cartData = (storage.get("state")?.cart as ICart[]) ?? [];
+
+  if (cartData.length > 0) {
+    return cartData?.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  }
+  return 0;
+}

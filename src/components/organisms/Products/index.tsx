@@ -22,12 +22,12 @@ export const Products = () => {
     dispatch({ type: "ADD_TO_CART", payload: data });
   };
 
-  const handleDecreaseQuantity = (id: number) => {
+  const handleDecreaseQuantity = (id: number, price: number) => {
     if (quantity < 1) return;
     setQuantity(prevQuantity => prevQuantity - 1);
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { id, quantity: quantity - 1 },
+      payload: { id, quantity: quantity - 1, price },
     });
   };
 
@@ -70,6 +70,7 @@ export const Products = () => {
                     handleAddToCart({
                       quantity: 1,
                       id: product.id,
+                      price: product?.price,
                     })
                   }
                   setQuantity={el => setSelectedQuantity(el)}
@@ -93,12 +94,16 @@ export const Products = () => {
               deleteItem={() => handleDeleteItem(activeProduct?.id!)}
               saveForLater={() => handleSaveForLater(activeProduct?.id!)}
               decreaseQuantity={() =>
-                handleDecreaseQuantity(activeProduct?.id!)
+                handleDecreaseQuantity(
+                  activeProduct?.id!,
+                  activeProduct?.price!,
+                )
               }
               addQuantity={() =>
                 handleAddToCart({
                   quantity: 1,
                   id: activeProduct?.id!,
+                  price: activeProduct?.price!,
                 })
               }
               id={activeProduct?.id!}

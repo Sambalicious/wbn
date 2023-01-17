@@ -24,7 +24,7 @@ export type TAction =
   | { type: "CLEAR_CART" }
   | {
       type: "UPDATE_QUANTITY";
-      payload: { id: number; quantity: number };
+      payload: { id: number; quantity: number; price: number };
     }
   | {
       type: "SAVE_FOR_LATER";

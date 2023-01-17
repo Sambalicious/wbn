@@ -1,5 +1,5 @@
 import { ICart } from "@/types/index";
-import { formatCurrency, pluralise } from "@/utils/helpers";
+import { formatCurrency, pluralise, sumCart } from "@/utils/helpers";
 import { ReactNode } from "react";
 import styles from "./Cart.module.scss";
 
@@ -23,7 +23,7 @@ export const Cart = ({ children, cart }: CartProps) => {
             cart?.length,
             "item",
           )}):`}</p>
-          <p className={styles.cart__price}>{formatCurrency(91.37)} </p>
+          <p className={styles.cart__price}>{formatCurrency(sumCart())} </p>
         </div>
       </div>
     </div>
