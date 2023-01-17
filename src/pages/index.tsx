@@ -20,7 +20,7 @@ export default function Home() {
             onClick={() =>
               dispatch({
                 type: "ADD_TO_CART",
-                payload: { productId: 12, quantity: 10 },
+                payload: { id: 12, quantity: 10 },
               })
             }
             className={inter.className}
@@ -33,7 +33,7 @@ export default function Home() {
           </button>
           <button
             onClick={() =>
-              dispatch({ type: "DELETE_FROM_CART", payload: { productId: 12 } })
+              dispatch({ type: "DELETE_FROM_CART", payload: { id: 12 } })
             }
           >
             Remove from cart
@@ -42,7 +42,7 @@ export default function Home() {
             onClick={() =>
               dispatch({
                 type: "UPDATE_QUANTITY",
-                payload: { productId: 12, quantity: -1 },
+                payload: { id: 12, quantity: -1 },
               })
             }
           >

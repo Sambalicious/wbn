@@ -31,7 +31,7 @@ const CheckoutPage = () => {
               id={1}
               info={"Shipping details"}
               details={"Sambalicious"}
-              description={"1, WBN street ontario, canada"}
+              description={"1, WBN street remote worldwide"}
               buttonClick={() => {}}
             />
             <CheckoutItem

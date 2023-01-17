@@ -1,3 +1,3 @@
 export const urls = {
-  assets: "/info/assets",
+  products: "/products",
 };

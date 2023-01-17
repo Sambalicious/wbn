@@ -12,31 +12,31 @@ export const CartTemplate = ({ cartType = "cart" }: CartTemplateProps) => {
   const { state, dispatch } = useAppState();
   const cart = state?.cart;
 
-  const handleAddQuantity = (productId: number, quantity: number) => {
+  const handleAddQuantity = (id: number, quantity: number) => {
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { productId, quantity: quantity + 1 },
+      payload: { id, quantity: quantity + 1 },
     });
   };
 
-  const handleDecreaseQuantity = (productId: number, quantity: number) => {
+  const handleDecreaseQuantity = (id: number, quantity: number) => {
     if (quantity < 1) return;
 
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { productId, quantity: quantity - 1 },
+      payload: { id, quantity: quantity - 1 },
     });
   };
 
-  const handleDeleteItem = (productId: number) => {
-    dispatch({ type: "DELETE_FROM_CART", payload: { productId } });
+  const handleDeleteItem = (id: number) => {
+    dispatch({ type: "DELETE_FROM_CART", payload: { id } });
   };
 
-  const handleSaveForLater = (productId: number) => {
-    dispatch({ type: "SAVE_FOR_LATER", payload: { productId } });
+  const handleSaveForLater = (id: number) => {
+    dispatch({ type: "SAVE_FOR_LATER", payload: { id } });
   };
   let cartItemDetails = cart.map(item => {
-    return products?.find(product => product.productId === item.productId);
+    return products?.find(product => product.id === item.id);
   });
 
   return (
@@ -44,7 +44,7 @@ export const CartTemplate = ({ cartType = "cart" }: CartTemplateProps) => {
       <Cart cart={cart}>
         {isLoading ? (
           cart?.map(el => (
-            <div key={el.productId}>
+            <div key={el.id}>
               <Loader />{" "}
             </div>
           ))
@@ -52,20 +52,18 @@ export const CartTemplate = ({ cartType = "cart" }: CartTemplateProps) => {
           cartItemDetails?.map(item => (
             <CartItem
               type={cartType}
-              key={item?.productId!}
+              key={item?.id!}
               seller={"WBN"}
-              price={item?.senderFee!}
-              image={item?.img!}
-              isAvailable={item?.available!}
+              price={item?.price!}
+              image={item?.image!}
+              isAvailable
               isFreeShipping
-              productName={item?.productName!}
-              addQuantity={el => handleAddQuantity(item?.productId!, el)}
-              decreaseQuantity={el =>
-                handleDecreaseQuantity(item?.productId!, el)
-              }
-              deleteItem={() => handleDeleteItem(item?.productId!)}
-              saveForLater={() => handleSaveForLater(item?.productId!)}
-              productId={item?.productId!}
+              productName={item?.title!}
+              addQuantity={el => handleAddQuantity(item?.id!, el)}
+              decreaseQuantity={el => handleDecreaseQuantity(item?.id!, el)}
+              deleteItem={() => handleDeleteItem(item?.id!)}
+              saveForLater={() => handleSaveForLater(item?.id!)}
+              id={item?.id!}
             />
           ))
         ) : (

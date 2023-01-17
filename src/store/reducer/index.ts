@@ -2,18 +2,15 @@ import { storage } from "@/utils/helpers";
 import toast from "react-hot-toast";
 import { TAction, TState } from "store/types";
 
-function checkItemExistInArray<T extends { productId: number }>(
+function checkItemExistInArray<T extends { id: number }>(
   array: T[],
-  productId: number,
+  id: number,
 ) {
-  return array?.find(item => item.productId === productId);
+  return array?.find(item => item.id === id);
 }
 
-function deleteItemFromArray<T extends { productId: number }>(
-  array: T[],
-  productId: number,
-) {
-  return array.filter(item => item.productId !== productId);
+function deleteItemFromArray<T extends { id: number }>(array: T[], id: number) {
+  return array.filter(item => item.id !== id);
 }
 
 export const appReducer = (state: TState, action: TAction): TState => {
@@ -22,20 +19,17 @@ export const appReducer = (state: TState, action: TAction): TState => {
       /** delete the item from saveForLater if user decides to add the item to cart now */
       const newSavedItems = deleteItemFromArray(
         state.saveForLater,
-        action.payload.productId,
+        action.payload.id,
       );
       /** check if the item already exist in cart; if yes, increase the quantity instead. if No, add the item to cart */
-      const cartItem = checkItemExistInArray(
-        state.cart,
-        action.payload.productId,
-      );
+      const cartItem = checkItemExistInArray(state.cart, action.payload.id);
 
       if (!!cartItem) {
         let newState = {
           ...state,
           saveForLater: newSavedItems,
           cart: state.cart.map(item =>
-            item.productId === action.payload.productId
+            item.id === action.payload.id
               ? { ...item, quantity: item.quantity + 1 }
               : item,
           ),
@@ -59,7 +53,7 @@ export const appReducer = (state: TState, action: TAction): TState => {
       /** return a new cart with the selected item filtered out */
       let result = {
         ...state,
-        cart: deleteItemFromArray(state.cart, action.payload.productId),
+        cart: deleteItemFromArray(state.cart, action.payload.id),
       };
 
       storage.post("state", result);
@@ -67,15 +61,12 @@ export const appReducer = (state: TState, action: TAction): TState => {
       return result;
 
     case "UPDATE_QUANTITY":
-      const findCartItem = checkItemExistInArray(
-        state.cart,
-        action.payload.productId,
-      );
+      const findCartItem = checkItemExistInArray(state.cart, action.payload.id);
 
       /** if you decides to update the quantity of the item, Remove the item from saveForLater  */
       const updatedSavedItem = deleteItemFromArray(
         state.saveForLater,
-        action.payload.productId,
+        action.payload.id,
       );
 
       if (!!findCartItem) {
@@ -84,9 +75,9 @@ export const appReducer = (state: TState, action: TAction): TState => {
           saveForLater: updatedSavedItem,
           cart:
             findCartItem.quantity + action.payload.quantity < 2
-              ? deleteItemFromArray(state.cart, action.payload.productId)
+              ? deleteItemFromArray(state.cart, action.payload.id)
               : state.cart.map(item =>
-                  item.productId === action.payload.productId
+                  item.id === action.payload.id
                     ? { ...item, quantity: action.payload.quantity }
                     : item,
                 ),
@@ -116,14 +107,11 @@ export const appReducer = (state: TState, action: TAction): TState => {
     case "SAVE_FOR_LATER":
       const savedItem = checkItemExistInArray(
         state.saveForLater,
-        action.payload.productId,
+        action.payload.id,
       );
 
       /**if item was added to cart, removed saveForLater item from cart */
-      let filterCartItems = deleteItemFromArray(
-        state.cart,
-        action.payload.productId,
-      );
+      let filterCartItems = deleteItemFromArray(state.cart, action.payload.id);
 
       let savedItems = {
         ...state,

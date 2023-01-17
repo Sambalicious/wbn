@@ -4,16 +4,15 @@ export interface TInitialState {}
 
 export interface TState {
   cart: ICart[];
-  saveForLater: { productId: number }[];
+  saveForLater: { id: number }[];
 }
 
 export interface TProducts {
-  productId: number;
-  senderFee: number;
-  productName: string;
-  description: string;
-  img: string;
-  available?: boolean;
+  id: number;
+
+  title: string;
+  price: number;
+  image: string;
 }
 
 export type TAction =
@@ -21,13 +20,13 @@ export type TAction =
       type: "ADD_TO_CART";
       payload: ICart;
     }
-  | { type: "DELETE_FROM_CART"; payload: { productId: number } }
+  | { type: "DELETE_FROM_CART"; payload: { id: number } }
   | { type: "CLEAR_CART" }
   | {
       type: "UPDATE_QUANTITY";
-      payload: { productId: number; quantity: number };
+      payload: { id: number; quantity: number };
     }
   | {
       type: "SAVE_FOR_LATER";
-      payload: { productId: number };
+      payload: { id: number };
     };

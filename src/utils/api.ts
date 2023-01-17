@@ -5,7 +5,7 @@ const getToken = () => {
 };
 
 export const api = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}/v0.2/`,
+  baseURL: `${process.env.NEXT_PUBLIC_BASE_URL}`,
 });
 
 api.defaults.headers.common["X-API-KEY"] = getToken();

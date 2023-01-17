@@ -8,11 +8,11 @@ export const RecommendedProducts = () => {
   const savedItems = state?.saveForLater;
   const { products, isLoading } = useGetProducts();
   let savedItemDetails = savedItems.map(item => {
-    return products?.find(product => product.productId === item.productId);
+    return products?.find(product => product.id === item.id);
   });
 
-  const handleAddToCart = (productId: number) => {
-    dispatch({ type: "ADD_TO_CART", payload: { productId, quantity: 1 } });
+  const handleAddToCart = (id: number) => {
+    dispatch({ type: "ADD_TO_CART", payload: { id, quantity: 1 } });
   };
 
   return (
@@ -24,18 +24,18 @@ export const RecommendedProducts = () => {
       <div className={styles.product__item}>
         {isLoading ? (
           savedItems?.map(el => (
-            <div key={el.productId} style={{ width: "20%" }}>
+            <div key={el.id} style={{ width: "20%" }}>
               <Loader />
             </div>
           ))
         ) : savedItemDetails?.length > 0 ? (
           savedItemDetails?.map(product => (
             <SaveForLaterItem
-              key={product?.productId!}
-              image={product?.img!}
-              productName={product?.productName!}
-              price={product?.senderFee!}
-              addToCart={() => handleAddToCart(product?.productId!)}
+              key={product?.id!}
+              image={product?.image!}
+              productName={product?.title!}
+              price={product?.price!}
+              addToCart={() => handleAddToCart(product?.id!)}
               sellerName={"WBN"}
             />
           ))

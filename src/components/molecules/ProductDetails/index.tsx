@@ -19,7 +19,7 @@ interface ProductDetailsProps {
   image: string;
 
   setSelectedQuantity: (quantity: number) => void;
-  productId: number;
+  id: number;
 }
 export const ProductDetails = ({
   deleteItem,
@@ -28,7 +28,7 @@ export const ProductDetails = ({
   saveForLater,
   image,
   productName,
-  productId,
+  id,
   description,
   seller,
   price,
@@ -38,14 +38,14 @@ export const ProductDetails = ({
 
   const isDesktop = useMediaQuery("(min-width:1060px)");
 
-  const cartQuantity = cart.find(c => c.productId === productId)?.quantity ?? 1;
+  const cartQuantity = cart.find(c => c.id === id)?.quantity ?? 1;
 
   const [quantity, setQuantity] = useState(cartQuantity ?? 1);
   const handleChangeQuantity = (newQuantity: number) => {
     setQuantity(newQuantity);
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { productId, quantity: newQuantity },
+      payload: { id, quantity: newQuantity },
     });
   };
 

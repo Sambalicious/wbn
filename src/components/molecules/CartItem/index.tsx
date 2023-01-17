@@ -20,14 +20,14 @@ interface TCartItem {
   saveForLater: () => void;
   image: string;
   type?: "checkout" | "cart";
-  productId: number;
+  id: number;
 }
 
 export const CartItem = ({
   seller,
   productName,
   price,
-  productId,
+  id,
 
   isAvailable,
   isFreeShipping,
@@ -43,7 +43,7 @@ export const CartItem = ({
   const [quantity, setQuantity] = useState(1);
   const { state, dispatch } = useAppState();
   const cart = state?.cart;
-  const cartQuantity = cart.find(c => c.productId === productId)?.quantity ?? 1;
+  const cartQuantity = cart.find(c => c.id === id)?.quantity ?? 1;
 
   useEffect(() => {
     if (cartQuantity) {
@@ -56,12 +56,12 @@ export const CartItem = ({
     if (newQuantity === 0) {
       return dispatch({
         type: "DELETE_FROM_CART",
-        payload: { productId },
+        payload: { id },
       });
     }
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { productId, quantity: newQuantity },
+      payload: { id, quantity: newQuantity },
     });
   };
 

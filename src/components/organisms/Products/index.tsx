@@ -22,21 +22,21 @@ export const Products = () => {
     dispatch({ type: "ADD_TO_CART", payload: data });
   };
 
-  const handleDecreaseQuantity = (productId: number) => {
+  const handleDecreaseQuantity = (id: number) => {
     if (quantity < 1) return;
     setQuantity(prevQuantity => prevQuantity - 1);
     dispatch({
       type: "UPDATE_QUANTITY",
-      payload: { productId, quantity: quantity - 1 },
+      payload: { id, quantity: quantity - 1 },
     });
   };
 
-  const handleDeleteItem = (productId: number) => {
-    dispatch({ type: "DELETE_FROM_CART", payload: { productId } });
+  const handleDeleteItem = (id: number) => {
+    dispatch({ type: "DELETE_FROM_CART", payload: { id } });
   };
 
-  const handleSaveForLater = (productId: number) => {
-    dispatch({ type: "SAVE_FOR_LATER", payload: { productId } });
+  const handleSaveForLater = (id: number) => {
+    dispatch({ type: "SAVE_FOR_LATER", payload: { id } });
   };
 
   const handleView = (product: TProducts) => {
@@ -58,18 +58,18 @@ export const Products = () => {
           ) : (
             products?.length > 0 &&
             products?.map(product => (
-              <div key={product.productId}>
+              <div key={product.id}>
                 <HomeItem
-                  key={product.productId}
-                  title={product.productName}
-                  price={product.senderFee}
-                  image={product.img}
+                  key={product.id}
+                  title={product.title}
+                  price={product.price}
+                  image={product.image}
                   quantity={selectedQuantity}
-                  productId={product.productId}
+                  id={product.id}
                   addToCart={() =>
                     handleAddToCart({
                       quantity: 1,
-                      productId: product.productId,
+                      id: product.id,
                     })
                   }
                   setQuantity={el => setSelectedQuantity(el)}
@@ -84,24 +84,24 @@ export const Products = () => {
         <Modal isOpen={openModal} onClose={() => setOpenModal(!openModal)}>
           <div>
             <ProductDetails
-              description={activeProduct?.description!}
-              productName={activeProduct?.productName!}
-              price={activeProduct?.senderFee!}
-              image={activeProduct?.img!}
+              description={"lorem Ips"}
+              productName={activeProduct?.title!}
+              price={activeProduct?.price!}
+              image={activeProduct?.image!}
               setSelectedQuantity={setSelectedQuantity}
-              seller={activeProduct?.productName!}
-              deleteItem={() => handleDeleteItem(activeProduct?.productId!)}
-              saveForLater={() => handleSaveForLater(activeProduct?.productId!)}
+              seller={activeProduct?.title!}
+              deleteItem={() => handleDeleteItem(activeProduct?.id!)}
+              saveForLater={() => handleSaveForLater(activeProduct?.id!)}
               decreaseQuantity={() =>
-                handleDecreaseQuantity(activeProduct?.productId!)
+                handleDecreaseQuantity(activeProduct?.id!)
               }
               addQuantity={() =>
                 handleAddToCart({
                   quantity: 1,
-                  productId: activeProduct?.productId!,
+                  id: activeProduct?.id!,
                 })
               }
-              productId={activeProduct?.productId!}
+              id={activeProduct?.id!}
             />
           </div>
         </Modal>
