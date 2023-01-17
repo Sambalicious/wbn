@@ -1,5 +1,6 @@
 import { Button, PopOver } from "@/components/atoms";
 import { formatCurrency } from "@/utils/helpers";
+import clsx from "clsx";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useAppState } from "store/context";
@@ -44,8 +45,14 @@ export const HomeItem = ({
   return (
     <div className={styles.item}>
       <div role="button" className="pointer" onClick={handleView}>
-        <div className="flex justify-center w-full">
-          <Image src={image} alt={title} width={250} height={200} priority />
+        <div className={clsx(styles.item__image, "image-wrapper")}>
+          <Image
+            className="image"
+            src={image}
+            alt={title}
+            width={250}
+            height={0}
+          />
         </div>
         <div>
           <p className={styles.item__title}>{title}</p>
@@ -58,6 +65,7 @@ export const HomeItem = ({
           selectedQuantity={quantity}
           setSelectedQuantity={el => handleChangeQuantity(el)}
         />
+
         <Button onClick={addToCart} className="px-1" variant="primary">
           Add to Cart
         </Button>

@@ -20,4 +20,9 @@
     color: $black;
     padding-block: 0.5rem;
   }
+
+  &__image {
+    min-height: 100%;
+    max-height: 500px;
+  }
 }

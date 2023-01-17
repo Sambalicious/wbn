@@ -2,6 +2,21 @@
 @use "variables" as *;
 @use "color" as *;
 
+.image-wrapper {
+  width: 100%;
+
+  > div {
+    position: unset !important;
+  }
+}
+
+.image {
+  -o-object-fit: contain;
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: 300px !important;
+}
 %cart {
   margin: 2rem 0;
   padding-bottom: 2rem;

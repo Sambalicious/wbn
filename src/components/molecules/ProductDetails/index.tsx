@@ -59,13 +59,14 @@ export const ProductDetails = ({
     <div className={styles.details}>
       <div className={styles.details__grid}>
         <div className={styles.details__grid__card}>
-          <div className="w-full">
+          <div className="image-wrapper">
             <Image
               src={image}
               alt={productName}
-              width={250}
-              height={200}
+              width={200}
+              height={250}
               priority
+              className={styles.details__image}
             />
           </div>
           <div className={styles.details__grid__card__text}>

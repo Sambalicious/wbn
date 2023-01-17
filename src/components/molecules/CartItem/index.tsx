@@ -68,13 +68,16 @@ export const CartItem = ({
   return (
     <>
       <section data-type={type} className={styles.cart__grid}>
-        <Image
-          src={image}
-          alt={productName}
-          width={200}
-          height={250}
-          priority
-        />
+        <div className="image-wrapper">
+          <Image
+            src={image}
+            alt={productName}
+            width={180}
+            height={280}
+            priority
+            className="image"
+          />
+        </div>
         <div>
           <div className={styles.cart__item}>
             <div className={styles.cart__item__flex}>
