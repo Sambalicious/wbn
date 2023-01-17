@@ -11,6 +11,7 @@ WBN store is an online store where you can purchase your ecommerce products
 - Decrease quantity of items in cart
 - Delete item from cart
 - Add Item for buy later
+- Remove item from buy later
 - Checkout page
 - Cart page
 - Responsive
@@ -55,6 +56,8 @@ Start the server
 ```
 
 ## Demo
+
+https://wbn-ten.vercel.app
 
 ## Tech Stack
 
