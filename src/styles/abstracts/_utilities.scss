@@ -1,0 +1,405 @@
+@use "mixins" as *;
+@use "variables" as *;
+@use "color" as *;
+
+%cart {
+  margin: 2rem 0;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column-reverse;
+  @include respondMin("tablet") {
+    //display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 30%;
+    //flex-direction: row-reverse;
+    margin: 2rem 1.5rem 1.5rem;
+    &[data-variant="checkout"] {
+      display: block;
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  // gap: var(--gap, 1rem);
+}
+
+.flex-without-gap {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.responsive-flex {
+  @include respondMin("tablet") {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-baseline {
+  align-items: baseline;
+}
+.text__and__span {
+  color: $gray-100;
+  font-size: var(--fs-14);
+  font-weight: 500;
+  margin-block: 2rem;
+  text-align: center;
+
+  span {
+    color: $primary;
+    font-size: var(--fs-14);
+    font-weight: 400;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.grid {
+  display: grid;
+  //--gap: 2rem
+  gap: var(--gap, 1rem);
+}
+
+.order-1 {
+  order: 1;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.btn__icon {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+
+  &[data-visible="true"] {
+    color: $primary;
+  }
+}
+
+.w-full {
+  width: 100%;
+}
+.w-50 {
+  width: 50%;
+}
+
+.hide {
+  display: none;
+}
+
+.border {
+  border: 1px solid #e5e5e5;
+}
+
+.headline-1 {
+  font-size: var(--fs-31);
+}
+
+.headline-2 {
+  font-size: var(--fs-26);
+}
+
+.headline-3 {
+  font-size: var(--fs-23);
+}
+
+.headline-4 {
+  font-size: var(--fs-21);
+  font-weight: 800;
+}
+
+.headline-5 {
+  font-size: var(--fs-20);
+}
+
+.headline-6 {
+  font-size: var(--fs-18);
+  font-weight: 600;
+}
+
+.body-1 {
+  font-size: var(--fs-15);
+  font-weight: 600;
+}
+
+.body-2 {
+  font-size: var(--fs-14);
+  color: #b3b2bb;
+}
+
+.subtitle-1 {
+  font-size: var(--fs-12);
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.active p {
+  color: $primary;
+}
+
+.empty-state-icon {
+  height: 55px;
+  display: flex;
+  max-width: 100px;
+  margin: 0px auto 20px;
+}
+
+.gray {
+  color: #b3b2bb;
+}
+
+$height: 50;
+@for $i from 1 to $height {
+  .h-#{$i} {
+    height: #{$i}rem;
+  }
+}
+
+$margins: 50;
+
+.mt-auto {
+  margin-top: auto;
+}
+.mr-auto {
+  margin-right: auto;
+}
+.mb-auto {
+  margin-bottom: auto;
+}
+.ml-auto {
+  margin-left: auto;
+}
+
+@for $i from 1 to $margins {
+  .m-#{$i} {
+    margin: #{$i}rem;
+  }
+
+  .-m-#{$i} {
+    margin: -#{$i}rem;
+  }
+
+  .mt-#{$i} {
+    margin-top: #{$i}rem;
+  }
+
+  .-mt-#{$i} {
+    margin-top: -#{$i}rem;
+  }
+
+  .mb-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+
+  .-mb-#{$i} {
+    margin-top: -#{$i}rem;
+  }
+
+  .ml-#{$i} {
+    margin-left: #{$i}rem;
+  }
+
+  .-ml-#{$i} {
+    margin-left: #{$i}rem;
+  }
+
+  .mr-#{$i} {
+    margin-right: #{$i}rem;
+  }
+
+  .-mr-#{$i} {
+    margin-right: #{$i}rem;
+  }
+
+  .my-#{$i} {
+    margin-top: #{$i}rem;
+    margin-bottom: #{$i}rem;
+  }
+  .-my-#{$i} {
+    margin-top: -#{$i}rem;
+    margin-bottom: -#{$i}rem;
+  }
+  .mx-#{$i} {
+    margin-right: #{$i}rem;
+    margin-left: #{$i}rem;
+  }
+
+  .-mx-#{$i} {
+    margin-right: -#{$i}rem;
+    margin-left: -#{$i}rem;
+  }
+
+  .m-auto {
+    margin: 0 auto;
+  }
+}
+
+//gaps
+// flex gap
+$gap: 100;
+@for $i from 1 to $gap {
+  .gap-#{$i} {
+    gap: #{$i}rem;
+  }
+}
+
+$position: 50;
+@for $i from 1 to $position {
+  .top-#{$i} {
+    top: #{$i}rem;
+  }
+  .-top-#{$i} {
+    top: -#{$i}rem;
+  }
+  .bottom-#{$i} {
+    bottom: #{$i}rem;
+  }
+  .-bottom-#{$i} {
+    bottom: -#{$i}rem;
+  }
+  .right-#{$i} {
+    right: #{$i}rem;
+  }
+  .-right-#{$i} {
+    right: -#{$i}rem;
+  }
+  .left-#{$i} {
+    left: #{$i}rem;
+  }
+  .-left-#{$i} {
+    left: -#{$i}rem;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+$paddings: 50;
+@for $i from 1 to $paddings {
+  .p-#{$i} {
+    padding: #{$i}rem;
+  }
+
+  .-p-#{$i} {
+    padding: -#{$i}rem;
+  }
+
+  .pt-#{$i} {
+    padding-top: #{$i}rem;
+  }
+
+  .-pt-#{$i} {
+    padding-top: -#{$i}rem;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: #{$i}rem;
+  }
+
+  .-pb-#{$i} {
+    padding-top: -#{$i}rem;
+  }
+
+  .pl-#{$i} {
+    padding-left: #{$i}rem;
+  }
+
+  .-pl-#{$i} {
+    padding-left: -#{$i}rem;
+  }
+
+  .pr-#{$i} {
+    padding-right: #{$i}rem;
+  }
+
+  .-pr-#{$i} {
+    padding-right: -#{$i}rem;
+  }
+
+  .py-#{$i} {
+    padding-top: #{$i}rem;
+    padding-bottom: #{$i}rem;
+  }
+
+  .-py-#{$i} {
+    padding-top: -#{$i}rem;
+    padding-bottom: -#{$i}rem;
+  }
+
+  .px-#{$i} {
+    padding-right: #{$i}rem;
+    padding-left: #{$i}rem;
+  }
+
+  .-px-#{$i} {
+    padding-right: -#{$i}rem;
+    padding-left: -#{$i}rem;
+  }
+}

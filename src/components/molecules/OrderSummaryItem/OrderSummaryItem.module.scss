@@ -1,0 +1,37 @@
+@use "@/styles/abstracts/variables.scss" as *;
+
+.item {
+  &__summary {
+    border-top: 1px solid $gray-100;
+    padding-block: 0.6rem;
+
+    &__header {
+      // margin-block: 0.7rem;
+      font-weight: 600;
+      font-size: var(--typography-h3);
+      color: $black;
+    }
+    table {
+      //   padding-right: 3.5rem;
+      border-collapse: collapse;
+      width: 100%;
+      padding-bottom: 1rem;
+    }
+
+    td {
+      padding-block: 0.5rem;
+    }
+  }
+  &__total {
+    color: $dark-orange;
+    font-weight: 600;
+    font-size: var(--typography-h2);
+    border-top: 1px dashed $gray-100;
+    padding-block: 0.5rem;
+  }
+  &__details {
+    font-weight: 400;
+    font-size: var(--typography-h3);
+    padding-block: 0.7rem;
+  }
+}

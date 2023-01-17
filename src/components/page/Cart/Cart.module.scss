@@ -1,0 +1,32 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.cart {
+  //margin: 2rem 0.5rem;
+
+  &__grid {
+    @include respondMin("tablet") {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 35%;
+      // flex-direction: row-reverse;
+      margin: 2rem 1.5rem 1.5rem;
+    }
+  }
+
+  &__clear {
+    color: $red;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1.5rem 1rem;
+    gap: 0.5rem;
+    width: 100%;
+    border: none;
+
+    @include respondMin("tablet") {
+      justify-content: flex-start;
+      padding: 1rem 3.5rem;
+    }
+  }
+}

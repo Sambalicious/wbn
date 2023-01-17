@@ -1,0 +1,51 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+.button {
+  cursor: pointer;
+  position: relative;
+  padding-block: 0.6rem;
+  color: $black;
+  outline: none;
+  //width: 100%;
+  border-radius: 0.8rem;
+  //padding: 1rem 3.5rem;
+  text-align: center;
+  transition: all 0.1s ease-out;
+  border: 1px solid $primary-200;
+
+  font-weight: 700;
+  font-size: 0.875rem;
+
+  &[data-variant="primary"] {
+    background: $primary;
+    color: $black;
+    box-shadow: 0 0.2rem 0.5rem 0 rgb(213 217 217 / 50%);
+  }
+  &[data-variant="secondary"] {
+    background: $white;
+    color: $black;
+    box-shadow: $shadow-medium;
+    border: none;
+    // border: 1px solid $dark-green;
+    color: $black;
+  }
+
+  &[data-variant="outline"] {
+    background-color: $white;
+    border: 1px solid $dark-green;
+    color: $dark-green;
+  }
+
+  &[data-variant="ghost"] {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: $blue;
+    display: flex;
+    padding: 0;
+  }
+
+  // button:focus {
+  //   border: 10px solid red;
+  // }
+}

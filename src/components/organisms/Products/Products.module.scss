@@ -1,0 +1,39 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.products {
+  &__item {
+    margin: 1rem;
+
+    @include respondMin("tablet") {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.8rem;
+      align-items: center;
+      margin: 1rem 2rem;
+    }
+  }
+
+  &__recommended {
+    background-color: $white;
+    padding: 1.5rem;
+
+    &__header {
+      font-size: var(--typography-h3);
+      font-weight: 600;
+      color: $black;
+      padding: 3rem 1.5;
+    }
+    &__flex {
+      overflow-x: auto;
+      display: flex;
+      gap: 2rem;
+      white-space: nowrap;
+
+      position: relative;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+}

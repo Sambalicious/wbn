@@ -1,0 +1,77 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.cart {
+  background-color: $white;
+
+  padding: 4rem;
+  border-bottom: 1px solid $gray-100;
+  align-items: center;
+
+  &__grid {
+    padding: 1.5rem 1rem;
+    @include respondMin("tablet") {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: 30% 1fr;
+    }
+  }
+
+  &__item {
+    &__flex {
+      @include respondMin("tablet") {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+    &__name {
+      width: 80%;
+      word-break: normal;
+      font-weight: 800;
+      font-size: var(--typography-h4);
+      padding-block: 0.5rem;
+    }
+
+    &__shipping {
+      font-size: 0.75rem;
+      color: $gray-400;
+      font-weight: 400;
+    }
+
+    &__availability {
+      font-size: var(--typography-h4);
+      color: $blue;
+      font-weight: 600;
+      padding-block: 0.5rem;
+    }
+    &__buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+
+      &__border {
+        border-left: 1px solid $gray-100;
+        padding-inline: 0.7rem;
+      }
+    }
+    &__seller {
+      font-size: var(--typography-h4);
+      color: $dark-black;
+      font-weight: 600;
+      padding-block: 0.3rem;
+    }
+    &__price {
+      color: $black;
+      font-size: var(--typography-h2);
+      font-weight: 700;
+    }
+
+    &__mobile {
+      &__button {
+        padding-inline: 0.7rem;
+      }
+    }
+  }
+}

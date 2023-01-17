@@ -1,0 +1,63 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.details {
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    gap: 2rem;
+    @include respondMin("tablet") {
+      display: grid;
+      grid-template-columns: 35% 1fr;
+      gap: 2.5rem;
+    }
+
+    &__card {
+      box-shadow: $shadow-light;
+      border-radius: 6px;
+      border: 1px solid $gray-100;
+      height: -webkit-max-content;
+      height: -moz-max-content;
+      height: max-content;
+
+      &__text {
+        font-weight: 600;
+        padding: 1rem 1rem 1.5rem;
+        font-size: var(--typography-h4);
+      }
+
+      &__price {
+        border-top: 1px solid $gray-100;
+        padding: 1rem;
+        h3 {
+          font-weight: 700;
+          font-size: var(--typography-h1);
+          color: $black;
+        }
+      }
+    }
+    &__item {
+      &__name {
+        font-weight: 700;
+        font-size: var(--typography-h2);
+      }
+      &__seller {
+        font-weight: 500;
+        color: $gray-400;
+        font-size: var(--typography-h2);
+        padding-bottom: 0.5rem;
+      }
+
+      &__details {
+        border-top: 1px solid $gray-100;
+        padding-top: 1rem;
+
+        &__description {
+          font-weight: 500;
+          font-size: var(--typography-h3);
+        }
+      }
+    }
+  }
+}

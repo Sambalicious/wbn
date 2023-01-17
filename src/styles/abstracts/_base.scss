@@ -1,0 +1,179 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  outline: none;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  //font-size: calc(100vw / 1440 * 16);
+  margin: 0;
+  font: inherit;
+  // background-color: #eaeded;
+  font-family: "Inter" sans-serif;
+}
+
+html {
+  height: 100%;
+
+  overflow: hidden;
+  background-color: #eaeded;
+
+  @include flex(stretch, stretch, column);
+
+  // @include respondMax("tablet") {
+  //   font-size: calc(100vw / 600 * 10);
+  // }
+}
+
+#__next {
+  flex-grow: 1;
+  overflow-x: hidden;
+  background-color: #eaeded;
+  @include flex(stretch, stretch, column);
+}
+
+//ending
+
+/* Reset margins */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: 400;
+}
+
+/* set up the body */
+body {
+  flex-grow: 1;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  @include flex(stretch, stretch, column);
+  background-color: #eaeded;
+  position: relative;
+  font-family: $font-default;
+}
+
+/* make images easier to work with */
+img,
+picture {
+  @include respondMax("tablet") {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* make form elements easier to work with */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    -webkit-animation-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap; /* added line */
+  border: 0;
+}
+
+select {
+  width: 100%;
+  padding: 0.5rem 1.2rem;
+  background: #f8f8f8;
+  border-radius: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.select-wrapper {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid #5e7079;
+    right: 15px;
+    z-index: 1;
+    transform: translateY(-50%);
+    top: 50%;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+.select__input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 12px;
+  color: inherit;
+  display: block;
+  width: 100%;
+  font-family: inherit;
+  border: 1px solid #d4d5d8;
+  border-radius: 4px;
+  outline: none;
+  position: relative;
+  background-color: #ffffff;
+  box-shadow: 0 1px 0 0 rgba(22, 29, 37, 0.05);
+  transition: border-color ease-in-out 0.3s, box-shadow ease-in-out 0.3s;
+
+  &:focus {
+    border-color: #232f49;
+  }
+}

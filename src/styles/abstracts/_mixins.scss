@@ -1,0 +1,61 @@
+@use "variables" as *;
+
+// flexbox
+@mixin flex($justify: flex-start, $align: flex-start, $flow: row wrap) {
+  flex-flow: $flow;
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin cart() {
+  .cart {
+    margin: 2rem 0.5rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column-reverse;
+    @include respondMin("tablet") {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 30%;
+      flex-direction: row-reverse;
+      margin: 2rem 1.5rem 1.5rem;
+      &[data-variant="checkout"] {
+        display: block;
+      }
+    }
+  }
+}
+
+// breakpoints
+$breakpoints: (
+  "mobile": 640,
+  "tablet": 768,
+  "lg-tablet": 1024,
+  "sm-desktop": 1280,
+  "desktop": 1536,
+) !default;
+
+@mixin respondMin($breakpoint) {
+  //mobile first
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: (map-get($breakpoints, $breakpoint) * 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+      + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin respondMax($breakpoint) {
+  //desktop first
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: ((map-get($breakpoints, $breakpoint) - 0.02) * 1px)) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+      + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}

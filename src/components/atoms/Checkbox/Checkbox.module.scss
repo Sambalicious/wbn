@@ -1,0 +1,29 @@
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  // margin-bottom: 0.8rem;
+  cursor: pointer;
+  padding: 0.6rem 1rem 0.6rem 0;
+  font-weight: 400;
+  // width: 100%;
+  margin-right: 0.5rem;
+  outline: none;
+  display: flex;
+  gap: 2rem;
+
+  input[type="checkbox"] {
+    height: 1.3rem;
+    width: 1.3rem;
+
+    background-color: transparent;
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+  }
+
+  &__label {
+    font-weight: 400;
+    margin-left: 0.5rem;
+  }
+}

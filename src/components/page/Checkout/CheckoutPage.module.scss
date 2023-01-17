@@ -1,0 +1,51 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.checkout {
+  background-color: $white;
+  padding-block: 2rem;
+  position: relative;
+  &__grid {
+    @include respondMin("tablet") {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: 1fr 28%;
+    }
+  }
+
+  &__aside {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 6rem;
+    border: 1px solid $gray-100;
+    //  padding: 1rem;
+    border-radius: 8px;
+    margin-inline: 1rem;
+    box-shadow: $shadow-light;
+
+    height: -webkit-max-content;
+
+    height: -moz-max-content;
+
+    height: max-content;
+  }
+
+  &__order {
+    // color: $gray-400;
+    font-weight: 500;
+    font-size: var(--typography-h4);
+    margin-top: 0.7rem;
+
+    @include respondMax("tablet") {
+      margin-block: 1rem;
+    }
+  }
+
+  &__shipping {
+    background-color: #eaeaea;
+    padding: 1.5rem 1rem;
+    font-weight: 600;
+    font-size: var(--typography-h4);
+    color: $black;
+  }
+}

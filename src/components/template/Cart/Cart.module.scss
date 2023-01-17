@@ -1,0 +1,19 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+@use "@/styles/abstracts/utilities.scss" as *;
+
+.cart {
+  margin: 0 0 2rem;
+  padding-bottom: 2rem;
+
+  @include respondMin("tablet") {
+    //display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr 30%;
+    //flex-direction: row-reverse;
+    margin: 0 1.5rem 1.5rem 2rem;
+    &[data-variant="checkout"] {
+      display: block;
+    }
+  }
+}

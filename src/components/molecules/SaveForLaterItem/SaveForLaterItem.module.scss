@@ -1,0 +1,42 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.item {
+  padding: 1rem 0.5rem;
+  // border: 1px solid $gray-100;
+  margin: 1rem 0;
+  box-shadow: $shadow-light;
+  @include respondMin("mobile") {
+    display: flex;
+    gap: 1.5rem;
+    float: none;
+  }
+
+  &__image {
+    width: 100%;
+    @include respondMin("tablet") {
+      width: 50%;
+    }
+  }
+  &__title {
+    color: $blue;
+    font-size: var(--typography-h4);
+    font-weight: 400;
+    margin-block: 0.5rem;
+  }
+
+  &__seller {
+    color: $black;
+    font-weight: 500;
+    font-size: var(--typography-h4);
+    padding-inline: 0.125rem;
+    padding-bottom: 1rem;
+  }
+
+  &__button {
+    padding: 0.4rem 0.7rem;
+    display: flex;
+    justify-content: center;
+    margin-block: 0.8rem;
+  }
+}

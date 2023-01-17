@@ -1,0 +1,27 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.product {
+  padding: 1rem;
+  background-color: $white;
+  box-shadow: $shadow-light;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+
+  &__header {
+    font-weight: 600;
+    font-size: var(--typography-h4);
+    color: $black;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid $gray-100;
+    padding-bottom: 0.5rem;
+  }
+
+  // &__item {
+  //   @include respondMax("tablet") {
+  //     display: grid;
+  //     grid-template-columns: repeat(2, 1fr);
+  //     gap: 0.5rem;
+  //   }
+  // }
+}

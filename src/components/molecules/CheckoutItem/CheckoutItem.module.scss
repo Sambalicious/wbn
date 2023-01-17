@@ -1,0 +1,44 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.item {
+  background-color: $white;
+  display: flex;
+  justify-content: space-between;
+  //margin: 1rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid $gray-100;
+
+  border-radius: 4px;
+
+  @include respondMin("tablet") {
+    margin: 1rem 2rem;
+    padding: 1rem 2rem;
+  }
+  // align-items: center;
+  &__number {
+    font-weight: 700;
+    font-size: var(--typography-h2);
+    color: $black;
+  }
+
+  &__flex {
+    @include respondMin("tablet") {
+      display: flex;
+      gap: 1.5rem;
+    }
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: var(--typography-h4);
+    color: $black;
+    margin-top: 0.3rem;
+  }
+  &__address {
+    font-weight: 500;
+    font-size: var(--typography-h4);
+    width: 80%;
+    word-wrap: break-word;
+  }
+}

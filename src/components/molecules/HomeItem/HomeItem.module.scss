@@ -1,0 +1,23 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.item {
+  background-color: $white;
+  border-radius: 6px;
+  box-shadow: $shadow-light;
+  padding: 1rem;
+  max-width: 270px;
+  width: 100%;
+
+  @include respondMax("tablet") {
+    max-width: 100%;
+    margin-block: 1.5rem;
+  }
+
+  &__title {
+    font-size: var(--typography-h3);
+    font-weight: 600;
+    color: $black;
+    padding-block: 0.5rem;
+  }
+}

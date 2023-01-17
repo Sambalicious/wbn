@@ -1,0 +1,55 @@
+@use "@/styles/abstracts/variables.scss" as *;
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.item {
+  box-shadow: $shadow-light;
+  border-radius: 8px;
+  border: 1px solid $gray-100;
+
+  padding: 2rem 1.5rem;
+
+  margin: 1rem 0.5rem;
+  background-color: $white;
+  display: flex;
+  gap: 1rem;
+  flex-direction: column-reverse;
+
+  @include respondMin("tablet") {
+    margin: 2rem;
+    padding: 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__details {
+    font-weight: 500;
+    color: $gray-400;
+    padding-top: 0.7rem;
+    margin-left: 0.4rem;
+  }
+
+  &__total {
+    color: $dark-orange;
+    font-size: var(--typography-h2);
+    font-weight: 700;
+  }
+
+  &__order {
+    // color: $gray-400;
+    font-weight: 500;
+    font-size: var(--typography-h4);
+    margin-top: 0.7rem;
+
+    @include respondMax("tablet") {
+      margin-block: 1rem;
+    }
+  }
+
+  &__terms {
+    color: $blue;
+    cursor: pointer;
+    color: $black;
+    font-weight: 500;
+    font-size: var(--typography-h4);
+  }
+}

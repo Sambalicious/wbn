@@ -1,0 +1,12 @@
+@use "@/styles/abstracts/mixins.scss" as *;
+
+.empty {
+  width: 60%;
+  margin: 3rem auto;
+  padding-block: 2rem;
+  text-align: center;
+
+  @include respondMin("tablet") {
+    display: flex;
+  }
+}

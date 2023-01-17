@@ -1,0 +1,30 @@
+@use "@/styles/abstracts/variables.scss" as *;
+
+.cart {
+  background-color: $white;
+  padding: 1.5rem;
+  border-radius: 6px;
+  box-shadow: $shadow-light;
+  // height: 277px;
+  margin-bottom: 1rem;
+
+  &__subtotal {
+    font-weight: 600;
+    font-size: var(--typography-h2);
+    color: $black;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: var(--typography-h1);
+    color: $black;
+  }
+
+  &__button {
+    padding-inline: 0.7rem;
+    width: 100%;
+    margin-block: 0.5rem;
+    text-align: center;
+    text-decoration: none;
+  }
+}
